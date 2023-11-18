@@ -4,10 +4,12 @@ import { useAccount } from '@hooks/useAccount'
 import { Button, Stack, Typography } from '@mui/material'
 import { switchToGoerliNetwork } from '@services/metamask/switchToGoerliNetwork'
 import { connectToMetamask } from '@services/metamask/connectToMetamask'
+import { useQuizBalance } from '@hooks/useQuizBalance'
 
 export default function MetamaskConnect() {
   const { isGoerliNetwork } = useCheckGoerliNetwork()
   const { connected } = useAccount()
+  const { balance } = useQuizBalance()
 
   const handleOnSwitchNetwork = () => {
     switchToGoerliNetwork()
@@ -36,7 +38,11 @@ export default function MetamaskConnect() {
               </Button>
             </Stack>
           ) : (
-            <AccountInfo />
+            <AccountInfo
+              connected={connected}
+              network='Goerli'
+              balance={balance || 0}
+            />
           )}
         </>
       ) : (
