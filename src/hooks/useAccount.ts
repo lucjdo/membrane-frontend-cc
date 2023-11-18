@@ -1,11 +1,10 @@
-import { useContext } from 'react'
-import { AccountContext } from '@context/account'
+import { getAccounts } from '@services/metamask/getAccount'
+import { useQuery } from 'react-query'
 
 export function useAccount() {
-  const accountContext = useContext(AccountContext)
+  const { data, isLoading } = useQuery<string[]>('accounts', getAccounts)
+  const account = data?.[0]
+  const connected = !!account
 
-  if (!accountContext)
-    throw new Error('useFeedbackContext need to be used on Provicer')
-
-  return accountContext
+  return { account, connected, isLoading }
 }
