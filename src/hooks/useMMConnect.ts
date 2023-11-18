@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react'
+import { ethers } from 'ethers'
 import { useAccount } from './useAccount'
 
 export function useMMConnect() {
-  const [account, setAccount] = useState<string>('')
   const { setAccount: setContextAccount } = useAccount()
 
-  useEffect(() => {
-    setContextAccount({ accountId: account, connected: true })
-  }, [account, setContextAccount])
-
-  const connect = () => {
+  const connect = async () => {
     if (window.ethereum) {
-      window.ethereum
-        .request({ method: 'eth_requestAccounts' })
-        .then((res) => setAccount(res[0]))
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      })
+      const accountId = accounts[0]
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const network = await provider.getNetwork()
+      setContextAccount({
+        accountId,
+        connected: true,
+        chainId: network.chainId
+      })
     } else {
       alert('Install metamask extension!!')
     }
   }
 
-  return { account, connect }
+  return { connect }
 }

@@ -1,5 +1,5 @@
 export type Account = {
   accountId?: string
-  chainId?: string
+  chainId?: bigint
   connected: boolean
 }

@@ -1,4 +1,3 @@
-import { MetaMaskProvider } from '@metamask/sdk-react'
 import { AccountContextProvider } from '@context/account'
 import Survey from '@containers/survey'
 import './App.css'
