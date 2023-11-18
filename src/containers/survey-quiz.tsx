@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -20,6 +21,10 @@ export default function SurveyQuiz() {
   const image = questions[questionNumber].image
   const options = questions[questionNumber].options
 
+  const handleOnNextClick = () => {
+    setQuestionNumber((prevState) => prevState + 1)
+  }
+
   return (
     <Stack
       sx={{ border: '1px solid #fff', borderRadius: '0.7rem', p: 3, gap: 2 }}
@@ -29,8 +34,7 @@ export default function SurveyQuiz() {
         <FormControl sx={{ gap: 1 }}>
           <FormLabel id={quizFormId}>{question}</FormLabel>
           <img
-            srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            src={`${image}?w=164&h=164&fit=crop&auto=format`}
+            src={`${image}?fit=crop&auto=format`}
             alt={`${question} image`}
             loading='lazy'
           />
@@ -46,6 +50,7 @@ export default function SurveyQuiz() {
             ))}
           </RadioGroup>
         </FormControl>
+        <Button onClick={handleOnNextClick}>Next Question</Button>
       </Stack>
     </Stack>
   )

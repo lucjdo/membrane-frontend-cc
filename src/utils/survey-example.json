@@ -1,26 +1,26 @@
 {
-  "title": "Sample Survey",
+  "title": "Space Survey",
   "image": "https://48tools.com/wp-content/uploads/2015/09/shortlink.png",
   "questions": [
     {
-      "text": "What fruit do you absolutely prefer?",
-      "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+      "text": "Do you think there might be life beyond Earth?",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.cJaWygjaQet7EFbwV-s5ZAAAAA%26pid%3DApi&f=1&ipt=f6c78e3d8e93956092beba451f8eb8c7be0b33444f0553e9916cae14cf123961&ipo=images",
       "lifetimeSeconds": 10,
       "options": [
         {
-          "text": "Orange"
+          "text": "The universe is a big place, so why not? "
         },
         {
-          "text": "Apple"
+          "text": "I'm not convinced yet, but I'm open to learning more!"
         },
         {
-          "text": "Banana"
+          "text": "Absoluty not!"
         }
       ]
     },
     {
       "text": "Question2",
-      "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.cJaWygjaQet7EFbwV-s5ZAAAAA%26pid%3DApi&f=1&ipt=f6c78e3d8e93956092beba451f8eb8c7be0b33444f0553e9916cae14cf123961&ipo=images",
       "lifetimeSeconds": 5,
       "options": [
         {
@@ -36,7 +36,7 @@
     },
     {
       "text": "Pregunta 2",
-      "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.cJaWygjaQet7EFbwV-s5ZAAAAA%26pid%3DApi&f=1&ipt=f6c78e3d8e93956092beba451f8eb8c7be0b33444f0553e9916cae14cf123961&ipo=images",
       "lifetimeSeconds": 5,
       "options": [
         {
