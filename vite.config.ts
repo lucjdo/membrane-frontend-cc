@@ -10,7 +10,8 @@ export default defineConfig({
       '@containers': '/src/containers',
       '@services': '/src/services',
       '@hooks': '/src/hooks',
-      '@assets': '/src/assets'
+      '@assets': '/src/assets',
+      '@context': '/src/context'
     }
   }
 })

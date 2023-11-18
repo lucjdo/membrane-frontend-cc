@@ -12,6 +12,10 @@ export default function SurveyWelcome() {
         exciting tokens as a reward for your valuable input! 🚀
       </Typography>
 
+      <Button variant='contained' onClick={connect} disabled={connecting}>
+        Connect with Metamask
+      </Button>
+
       {connected ? (
         <div>
           <>

@@ -1,9 +1,15 @@
 import { useSDK } from '@metamask/sdk-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAccount } from './useAccount'
 
 export function useMMConnect() {
   const [account, setAccount] = useState<string>()
+  const { setAccount: setContextAccount } = useAccount()
   const { sdk, connected, connecting, chainId } = useSDK()
+
+  useEffect(() => {
+    setContextAccount({ accountId: account, chainId, connected })
+  }, [account, chainId, connected, setContextAccount])
 
   const connect = async () => {
     try {
