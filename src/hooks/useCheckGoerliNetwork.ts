@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from 'react'
-import { AccountContext } from '@context/account'
+import { useEffect, useState } from 'react'
+import { useChainId } from './useChainId'
 
 export function useCheckGoerliNetwork() {
   const [isGoerliNetwork, setIsGoerliNetwork] = useState(false)
-  const accountContext = useContext(AccountContext)
-  const chainId = accountContext?.account.chainId
+  const { chainId } = useChainId()
 
   useEffect(() => {
     if (chainId === BigInt(5n)) return setIsGoerliNetwork(true)

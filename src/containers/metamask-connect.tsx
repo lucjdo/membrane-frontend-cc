@@ -1,23 +1,25 @@
 import AccountInfo from '@components/account-info'
 import { useCheckGoerliNetwork } from '@hooks/useCheckGoerliNetwork'
-import { useMMConnect } from '@hooks/useMMConnect'
+import { useAccount } from '@hooks/useAccount'
 import { Button, Stack, Typography } from '@mui/material'
 import { switchToGoerliNetwork } from '@services/metamask/switchToGoerliNetwork'
-import { AccountContext } from '../context/account'
-import { useContext } from 'react'
+import { connectToMetamask } from '@services/metamask/connectToMetamask'
 
 export default function MetamaskConnect() {
-  const { connect } = useMMConnect()
   const { isGoerliNetwork } = useCheckGoerliNetwork()
-  const accountContext = useContext(AccountContext)
+  const { connected } = useAccount()
 
   const handleOnSwitchNetwork = () => {
     switchToGoerliNetwork()
   }
 
+  const handleOnConnect = () => {
+    connectToMetamask()
+  }
+
   return (
     <>
-      {accountContext?.account.connected ? (
+      {connected ? (
         <>
           {!isGoerliNetwork ? (
             <Stack sx={{ alignItems: 'center' }}>
@@ -38,7 +40,7 @@ export default function MetamaskConnect() {
           )}
         </>
       ) : (
-        <Button variant='contained' onClick={connect}>
+        <Button variant='contained' onClick={handleOnConnect}>
           Connect with Metamask
         </Button>
       )}
