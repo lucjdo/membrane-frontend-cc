@@ -1,11 +1,12 @@
-import { Typography } from '@mui/material'
+import { Stack } from '@mui/material'
+import SurveyWelcome from '@containers/survey-welcome'
 import './App.css'
 
 function App() {
   return (
-    <>
-      <Typography>Welcome to Membrane!</Typography>
-    </>
+    <Stack>
+      <SurveyWelcome />
+    </Stack>
   )
 }
 
