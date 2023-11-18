@@ -9,7 +9,7 @@ import {
   Typography
 } from '@mui/material'
 import SURVEY_EXAMPLE from '../utils/survey-example.json'
-import { useId, useState } from 'react'
+import { useCallback, useEffect, useId, useState } from 'react'
 import LinearTimeout from '@components/linear-timeout'
 
 export default function SurveyQuiz() {
@@ -17,13 +17,31 @@ export default function SurveyQuiz() {
   const [questionNumber, setQuestionNumber] = useState(0)
   const surveyTitle = SURVEY_EXAMPLE.title
   const questions = SURVEY_EXAMPLE.questions
+  const questionsAmount = questions.length
   const question = questions[questionNumber].text
   const lifetime = questions[questionNumber].lifetimeSeconds * 1000
   const image = questions[questionNumber].image
   const options = questions[questionNumber].options
 
+  const incQuestionNumber = useCallback(() => {
+    setQuestionNumber((prevPage) => {
+      if (prevPage < questionsAmount - 1) {
+        return prevPage + 1
+      }
+      return prevPage
+    })
+  }, [questionsAmount])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      incQuestionNumber()
+    }, lifetime)
+
+    return () => clearTimeout(timeout)
+  }, [lifetime, questionNumber, incQuestionNumber])
+
   const handleOnNextClick = () => {
-    setQuestionNumber((prevState) => prevState + 1)
+    incQuestionNumber()
   }
 
   return (
@@ -51,7 +69,7 @@ export default function SurveyQuiz() {
             ))}
           </RadioGroup>
         </FormControl>
-        <LinearTimeout time={lifetime} />
+        <LinearTimeout key={questionNumber} time={lifetime} />
         <Button onClick={handleOnNextClick}>Next Question</Button>
       </Stack>
     </Stack>
