@@ -1,25 +1,26 @@
-import { useSDK } from '@metamask/sdk-react'
-import { useEffect, useState } from 'react'
+import { ethers } from 'ethers'
 import { useAccount } from './useAccount'
 
 export function useMMConnect() {
-  const [account, setAccount] = useState<string>()
   const { setAccount: setContextAccount } = useAccount()
-  const { sdk, connected, connecting, chainId } = useSDK()
-
-  useEffect(() => {
-    setContextAccount({ accountId: account, chainId, connected })
-  }, [account, chainId, connected, setContextAccount])
 
   const connect = async () => {
-    try {
-      const accounts = await sdk?.connect()
-      // @ts-expect-error MetaMasks docs
-      setAccount(accounts?.[0])
-    } catch (err) {
-      console.warn(`failed to connect..`, err)
+    if (window.ethereum) {
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      })
+      const accountId = accounts[0]
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const network = await provider.getNetwork()
+      setContextAccount({
+        accountId,
+        connected: true,
+        chainId: network.chainId
+      })
+    } else {
+      alert('Install metamask extension!!')
     }
   }
 
-  return { account, connected, connecting, chainId, connect }
+  return { connect }
 }
