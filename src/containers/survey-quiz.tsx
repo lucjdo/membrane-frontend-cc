@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import SURVEY_EXAMPLE from '../utils/survey-example.json'
 import { useId, useState } from 'react'
+import LinearTimeout from '@components/linear-timeout'
 
 export default function SurveyQuiz() {
   const quizFormId = useId()
@@ -17,7 +18,7 @@ export default function SurveyQuiz() {
   const surveyTitle = SURVEY_EXAMPLE.title
   const questions = SURVEY_EXAMPLE.questions
   const question = questions[questionNumber].text
-  const lifetimeSeconds = questions[questionNumber].lifetimeSeconds
+  const lifetime = questions[questionNumber].lifetimeSeconds * 1000
   const image = questions[questionNumber].image
   const options = questions[questionNumber].options
 
@@ -30,7 +31,7 @@ export default function SurveyQuiz() {
       sx={{ border: '1px solid #fff', borderRadius: '0.7rem', p: 3, gap: 2 }}
     >
       <Typography variant='h4'>{surveyTitle}</Typography>
-      <Stack sx={{ background: 'white', alignItems: 'center', p: 2 }}>
+      <Stack sx={{ background: 'white', alignItems: 'center', p: 2, gap: 2 }}>
         <FormControl sx={{ gap: 1 }}>
           <FormLabel id={quizFormId}>{question}</FormLabel>
           <img
@@ -50,6 +51,7 @@ export default function SurveyQuiz() {
             ))}
           </RadioGroup>
         </FormControl>
+        <LinearTimeout time={lifetime} />
         <Button onClick={handleOnNextClick}>Next Question</Button>
       </Stack>
     </Stack>
