@@ -1,9 +1,8 @@
+import { useMMConnect } from '@hooks/useMMConnect'
 import { Box, Typography, Button } from '@mui/material'
 
 export default function SurveyWelcome() {
-  const handleOnConnect = () => {
-    console.log('connect to metamask')
-  }
+  const { account, connected, connecting, chainId, connect } = useMMConnect()
 
   return (
     <Box>
@@ -12,9 +11,20 @@ export default function SurveyWelcome() {
         Get ready to participate in engaging quizzes and surveys while earning
         exciting tokens as a reward for your valuable input! 🚀
       </Typography>
-      <Button variant='contained' onClick={handleOnConnect}>
-        Connect with Metamask
-      </Button>
+
+      {connected ? (
+        <div>
+          <>
+            {chainId && `Connected chain: ${chainId}`}
+            <p></p>
+            {account && `Connected account: ${account}`}
+          </>
+        </div>
+      ) : (
+        <Button variant='contained' onClick={connect} disabled={connecting}>
+          Connect with Metamask
+        </Button>
+      )}
     </Box>
   )
 }
