@@ -1,7 +1,6 @@
 import { MetaMaskProvider } from '@metamask/sdk-react'
 import { AccountContextProvider } from '@context/account'
-import { Stack } from '@mui/material'
-import SurveyWelcome from '@containers/survey-welcome'
+import Survey from '@containers/survey'
 import './App.css'
 
 function App() {
@@ -17,9 +16,7 @@ function App() {
       }}
     >
       <AccountContextProvider>
-        <Stack>
-          <SurveyWelcome />
-        </Stack>
+        <Survey />
       </AccountContextProvider>
     </MetaMaskProvider>
   )

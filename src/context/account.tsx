@@ -1,10 +1,5 @@
 import { Dispatch, ReactNode, createContext, useState } from 'react'
-
-type Account = {
-  accountId?: string
-  chainId?: string
-  connected: boolean
-}
+import { Account } from 'types'
 
 type AccountContextType = {
   account: Account
