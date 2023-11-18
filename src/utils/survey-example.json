@@ -3,18 +3,18 @@
   "image": "https://48tools.com/wp-content/uploads/2015/09/shortlink.png",
   "questions": [
     {
-      "text": "Question1",
+      "text": "What fruit do you absolutely prefer?",
       "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
       "lifetimeSeconds": 10,
       "options": [
         {
-          "text": "Opt1"
+          "text": "Orange"
         },
         {
-          "text": "Opt2"
+          "text": "Apple"
         },
         {
-          "text": "Opt"
+          "text": "Banana"
         }
       ]
     },

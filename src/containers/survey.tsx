@@ -6,7 +6,7 @@ import { useAccount } from '@hooks/useAccount'
 export default function Survey() {
   const { connected } = useAccount()
   return (
-    <Stack>
+    <Stack gap={3}>
       <SurveyWelcome />
       {connected && <SurveyQuiz />}
     </Stack>
