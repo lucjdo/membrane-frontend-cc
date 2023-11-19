@@ -17,7 +17,7 @@ interface FormStepProps {
 }
 
 interface FormValues {
-  answer: string
+  answerId: string
 }
 
 export default function FormStep({ question }: FormStepProps) {
@@ -26,16 +26,18 @@ export default function FormStep({ question }: FormStepProps) {
   const lifetime = question.lifetimeSeconds * 1000
   const { incQuestionNumber, addAnswer, isLastQuestion, setSurveyStatus } =
     useQuestionsContext()
-  const answer = watch('answer')
+  const answerOptions = question?.options
+  const answer = watch('answerId')
+  console.log(answer)
   const questionText = question.text
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const response = {
+      const answerResponse = {
         question: questionText,
-        answer
+        answer: undefined
       }
-      addAnswer(response)
+      addAnswer(answerResponse)
       if (isLastQuestion) return setSurveyStatus('done')
       incQuestionNumber()
     }, lifetime)
@@ -54,9 +56,12 @@ export default function FormStep({ question }: FormStepProps) {
   return (
     <form
       onSubmit={handleSubmit((data) => {
+        const answerResponse = answerOptions.find(
+          (ans) => ans.id === data.answerId
+        )!
         const response = {
           question: questionText,
-          answer: data.answer
+          answer: answerResponse
         }
         addAnswer(response)
         if (isLastQuestion) return setSurveyStatus('done')
@@ -77,14 +82,14 @@ export default function FormStep({ question }: FormStepProps) {
           alt={`${question} image`}
         />
         <RadioGroup aria-labelledby={formId} name='options-group'>
-          {question?.options?.map((option) => (
+          {answerOptions.map((option) => (
             <FormControlLabel
-              {...register('answer')}
               key={option.text}
               sx={{ color: 'black' }}
-              value={option.text}
+              value={option.id}
               control={<Radio />}
               label={option.text}
+              {...register('answerId')}
             />
           ))}
         </RadioGroup>

@@ -19,4 +19,5 @@ export interface Question {
 
 export interface Option {
   text: string
+  id: string
 }
