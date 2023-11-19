@@ -1,16 +1,23 @@
-// FeedbackContext.tsx
 import {
   createContext,
   useState,
   ReactNode,
   useCallback,
-  Dispatch
+  Dispatch,
+  SetStateAction
 } from 'react'
+
+type SurveyStatus = 'ready' | 'in-progress' | 'done'
 
 interface SurveyQuestionsContextType {
   questionNumber: number
   incQuestionNumber: () => void
-  setQuestionsAmount: Dispatch<React.SetStateAction<number>>
+  setQuestionsAmount: Dispatch<SetStateAction<number>>
+  answers: (string | undefined)[]
+  addAnswer: (a: string) => void
+  isLastQuestion: boolean
+  surveyStatus: SurveyStatus
+  setSurveyStatus: Dispatch<SetStateAction<SurveyStatus>>
 }
 
 export const SurveyQuestionsContext = createContext<
@@ -18,8 +25,11 @@ export const SurveyQuestionsContext = createContext<
 >(undefined)
 
 export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
+  const [surveyStatus, setSurveyStatus] = useState<SurveyStatus>('ready')
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionsAmount, setQuestionsAmount] = useState(0)
+  const [answers, setAnswers] = useState<string[]>([])
+  const isLastQuestion = questionNumber === questionsAmount - 1
 
   const incQuestionNumber = useCallback(() => {
     setQuestionNumber((prevPage) => {
@@ -30,12 +40,22 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
     })
   }, [questionsAmount])
 
+  const addAnswer = (answer: string) => {
+    const newAnswer = [...answers, answer]
+    setAnswers(newAnswer)
+  }
+
   return (
     <SurveyQuestionsContext.Provider
       value={{
+        answers,
+        addAnswer,
         questionNumber,
         incQuestionNumber,
-        setQuestionsAmount
+        setQuestionsAmount,
+        isLastQuestion,
+        surveyStatus,
+        setSurveyStatus
       }}
     >
       {children}

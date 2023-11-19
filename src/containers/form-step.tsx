@@ -16,26 +16,43 @@ interface FormStepProps {
   question: Question
 }
 
+interface FormValues {
+  answer: string
+}
+
 export default function FormStep({ question }: FormStepProps) {
   const formId = useId()
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, watch } = useForm<FormValues>()
   const lifetime = question.lifetimeSeconds * 1000
-  const { incQuestionNumber } = useQuestionsContext()
-
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  const { incQuestionNumber, addAnswer, isLastQuestion, setSurveyStatus } =
+    useQuestionsContext()
+  const response = watch('answer')
 
   useEffect(() => {
     const timeout = setTimeout(() => {
+      addAnswer(response)
+      if (isLastQuestion) return setSurveyStatus('done')
       incQuestionNumber()
     }, lifetime)
 
     return () => clearTimeout(timeout)
-  }, [incQuestionNumber, lifetime])
+  }, [
+    incQuestionNumber,
+    lifetime,
+    addAnswer,
+    response,
+    isLastQuestion,
+    setSurveyStatus
+  ])
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        addAnswer(data.answer)
+        if (isLastQuestion) return setSurveyStatus('done')
+        incQuestionNumber()
+      })}
+    >
       <FormControl sx={{ gap: 1 }}>
         <FormLabel id={formId}>{question.text}</FormLabel>
         <img
@@ -55,7 +72,9 @@ export default function FormStep({ question }: FormStepProps) {
           ))}
         </RadioGroup>
         <LinearTimeout time={lifetime} />
-        <Button type='submit'>Next Question</Button>
+        <Button type='submit' disabled={!response}>
+          {isLastQuestion ? 'Finish Survey' : 'Next Question'}
+        </Button>
       </FormControl>
     </form>
   )
