@@ -1,4 +1,5 @@
 import LinearTimeout from '@components/linear-timeout'
+import { useQuestionsContext } from '@hooks/useQuestionsContext'
 import {
   FormControl,
   FormLabel,
@@ -7,17 +8,31 @@ import {
   Radio,
   Button
 } from '@mui/material'
-import { useId } from 'react'
+import { useEffect, useId } from 'react'
 import { useForm } from 'react-hook-form'
+import { Question } from 'types'
 
-export default function FormStep({ question }) {
+interface FormStepProps {
+  question: Question
+}
+
+export default function FormStep({ question }: FormStepProps) {
   const formId = useId()
   const { register, handleSubmit } = useForm()
   const lifetime = question.lifetimeSeconds * 1000
+  const { incQuestionNumber } = useQuestionsContext()
 
   const onSubmit = (data) => {
     console.log(data)
   }
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      incQuestionNumber()
+    }, lifetime)
+
+    return () => clearTimeout(timeout)
+  }, [incQuestionNumber, lifetime])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

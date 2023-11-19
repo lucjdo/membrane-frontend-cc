@@ -4,10 +4,14 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect
+  Dispatch
 } from 'react'
 
-interface SurveyQuestionsContextType {}
+interface SurveyQuestionsContextType {
+  questionNumber: number
+  incQuestionNumber: () => void
+  setQuestionsAmount: Dispatch<React.SetStateAction<number>>
+}
 
 export const SurveyQuestionsContext = createContext<
   SurveyQuestionsContextType | undefined
@@ -16,9 +20,6 @@ export const SurveyQuestionsContext = createContext<
 export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionsAmount, setQuestionsAmount] = useState(0)
-  const [currentQuestion, setCurrentQuestion] = useState({ lifetime: 10000 })
-
-  console.log(questionNumber)
 
   const incQuestionNumber = useCallback(() => {
     setQuestionNumber((prevPage) => {
@@ -29,21 +30,12 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
     })
   }, [questionsAmount])
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      incQuestionNumber()
-    }, currentQuestion.lifetime)
-
-    return () => clearTimeout(timeout)
-  }, [currentQuestion, questionNumber, incQuestionNumber])
-
   return (
     <SurveyQuestionsContext.Provider
       value={{
         questionNumber,
         incQuestionNumber,
-        setQuestionsAmount,
-        setCurrentQuestion
+        setQuestionsAmount
       }}
     >
       {children}
