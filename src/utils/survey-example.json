@@ -1,6 +1,6 @@
 {
   "title": "Space Survey",
-  "image": "https://48tools.com/wp-content/uploads/2015/09/shortlink.png",
+  "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.3NVaq19w8psT9lpQBbrSoQAAAA%26pid%3DApi&f=1&ipt=fdac179afa2362d9932809e21a67cb8aa6de1995feb38f22689ea10fefb5be46&ipo=images",
   "questions": [
     {
       "text": "Do you think there might be life beyond Earth?",
@@ -19,34 +19,34 @@
       ]
     },
     {
-      "text": "Question2",
-      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.cJaWygjaQet7EFbwV-s5ZAAAAA%26pid%3DApi&f=1&ipt=f6c78e3d8e93956092beba451f8eb8c7be0b33444f0553e9916cae14cf123961&ipo=images",
+      "text": "Do you believe humans will establish colonies on other planets within the next century?",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.hSlfL0hvhEEUUbdUx6hSKQAAAA%26pid%3DApi&f=1&ipt=423c00e12dd2704ac389f83856a9b693fa695b7c0b15079c06ad194a15c4ed39&ipo=images",
       "lifetimeSeconds": 10,
       "options": [
         {
-          "text": "Opt1"
+          "text": "Yes, I think we'll have colonies on other planets."
         },
         {
-          "text": "Opt2"
+          "text": "No, I believe it's unlikely within the next century."
         },
         {
-          "text": "Opt"
+          "text": "I'm not sure, it depends on technological advancements."
         }
       ]
     },
     {
-      "text": "Pregunta 2",
-      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.cJaWygjaQet7EFbwV-s5ZAAAAA%26pid%3DApi&f=1&ipt=f6c78e3d8e93956092beba451f8eb8c7be0b33444f0553e9916cae14cf123961&ipo=images",
-      "lifetimeSeconds": 5,
+      "text": "What role do you think private companies should have in space exploration?",
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.sxeqEkOj6jy3emYLeXwZUAAAAA%26pid%3DApi&f=1&ipt=23b1c1f7603fa61b65311fa05df78ea9f7f6f048bef51d843f6eb8646a787915&ipo=images",
+      "lifetimeSeconds": 7,
       "options": [
         {
-          "text": "Opt1"
+          "text": "They should lead and drive space exploration efforts."
         },
         {
-          "text": "Opt2"
+          "text": "They should collaborate with governments but not lead."
         },
         {
-          "text": "Opt"
+          "text": "They should have limited involvement, with governments leading exploration."
         }
       ]
     }

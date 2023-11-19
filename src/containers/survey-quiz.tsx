@@ -1,19 +1,20 @@
-import { Button, Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import SURVEY_EXAMPLE from '../utils/survey-example.json'
 import { useEffect } from 'react'
 import { useQuestionsContext } from '@hooks/useQuestionsContext'
 import FormStep from './form-step'
+import QuizInitial from './quiz-initial'
 
 export default function SurveyQuiz() {
   const {
     setQuestionsAmount,
     questionNumber,
-    setSurveyStatus,
     surveyReadyForStart,
     surveyDone,
     surveyInProgress
   } = useQuestionsContext()
   const surveyTitle = SURVEY_EXAMPLE.title
+  const initialImageUrl = SURVEY_EXAMPLE.image
   const questions = SURVEY_EXAMPLE.questions
   const questionsAmount = questions.length
   const question = questions[questionNumber]
@@ -29,12 +30,7 @@ export default function SurveyQuiz() {
       <Typography variant='h4'>{surveyTitle}</Typography>
       <Stack sx={{ background: 'white', alignItems: 'center', p: 2, gap: 2 }}>
         {surveyReadyForStart && (
-          <Button
-            variant='contained'
-            onClick={() => setSurveyStatus('in-progress')}
-          >
-            Start Survey
-          </Button>
+          <QuizInitial initialImageUrl={initialImageUrl} />
         )}
         {surveyInProgress && (
           <FormStep key={question.text} question={question} />

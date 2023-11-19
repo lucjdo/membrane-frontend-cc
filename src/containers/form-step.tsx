@@ -26,10 +26,15 @@ export default function FormStep({ question }: FormStepProps) {
   const lifetime = question.lifetimeSeconds * 1000
   const { incQuestionNumber, addAnswer, isLastQuestion, setSurveyStatus } =
     useQuestionsContext()
-  const response = watch('answer')
+  const answer = watch('answer')
+  const questionText = question.text
 
   useEffect(() => {
     const timeout = setTimeout(() => {
+      const response = {
+        question: questionText,
+        answer
+      }
       addAnswer(response)
       if (isLastQuestion) return setSurveyStatus('done')
       incQuestionNumber()
@@ -40,15 +45,20 @@ export default function FormStep({ question }: FormStepProps) {
     incQuestionNumber,
     lifetime,
     addAnswer,
-    response,
     isLastQuestion,
-    setSurveyStatus
+    setSurveyStatus,
+    answer,
+    questionText
   ])
 
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        addAnswer(data.answer)
+        const response = {
+          question: questionText,
+          answer: data.answer
+        }
+        addAnswer(response)
         if (isLastQuestion) return setSurveyStatus('done')
         incQuestionNumber()
       })}
@@ -72,8 +82,8 @@ export default function FormStep({ question }: FormStepProps) {
           ))}
         </RadioGroup>
         <LinearTimeout time={lifetime} />
-        <Button type='submit' disabled={!response}>
-          {isLastQuestion ? 'Finish Survey' : 'Next Question'}
+        <Button type='submit' disabled={!answer}>
+          {isLastQuestion ? 'Finish Survey' : 'Continue'}
         </Button>
       </FormControl>
     </form>

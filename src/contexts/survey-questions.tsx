@@ -9,12 +9,17 @@ import {
 
 type SurveyStatus = 'ready' | 'in-progress' | 'done'
 
+type QuestionResponse = {
+  question: string
+  answer: string
+}
+
 interface SurveyQuestionsContextType {
   questionNumber: number
   incQuestionNumber: () => void
   setQuestionsAmount: Dispatch<SetStateAction<number>>
-  answers: (string | undefined)[]
-  addAnswer: (a: string) => void
+  answers: (QuestionResponse | undefined)[]
+  addAnswer: (response: QuestionResponse) => void
   isLastQuestion: boolean
   setSurveyStatus: Dispatch<SetStateAction<SurveyStatus>>
   surveyDone: boolean
@@ -30,7 +35,7 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
   const [surveyStatus, setSurveyStatus] = useState<SurveyStatus>('ready')
   const [questionNumber, setQuestionNumber] = useState(0)
   const [questionsAmount, setQuestionsAmount] = useState(0)
-  const [answers, setAnswers] = useState<string[]>([])
+  const [answers, setAnswers] = useState<QuestionResponse[]>([])
   const isLastQuestion = questionNumber === questionsAmount - 1
   const surveyReadyForStart = surveyStatus === 'ready'
   const surveyInProgress = surveyStatus === 'in-progress'
@@ -45,7 +50,7 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
     })
   }, [questionsAmount])
 
-  const addAnswer = (answer: string) => {
+  const addAnswer = (answer: QuestionResponse) => {
     const newAnswer = [...answers, answer]
     setAnswers(newAnswer)
   }
