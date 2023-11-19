@@ -25,9 +25,7 @@ export default function SurveyQuiz() {
   }, [questionsAmount, setQuestionsAmount])
 
   return (
-    <Stack
-      sx={{ border: '1px solid #fff', borderRadius: '0.7rem', p: 3, gap: 2 }}
-    >
+    <Stack className='space' sx={{ borderRadius: '0.7rem', p: 3, gap: 2 }}>
       <Typography variant='h4'>{surveyTitle}</Typography>
       <Stack sx={{ alignItems: 'center', p: 2, gap: 2 }}>
         {surveyReadyForStart && (
