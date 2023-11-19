@@ -8,9 +8,10 @@ export default function ResponsiveImage({ imageUrl }: ResponsiveImageProps) {
   return (
     <Box
       sx={{
+        textAlign: 'center',
         maxWidth: '100%',
         height: 'auto',
-        magin: '0 auto',
+        margin: '0 auto',
         '> img': { maxWidth: '100%', height: 'auto', display: 'block' }
       }}
     >

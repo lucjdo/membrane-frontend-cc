@@ -18,22 +18,21 @@ export default function AccountInfo({
       gap={2}
       justifyContent='space-around'
       sx={{
-        border: '0.5px solid #fff',
         p: 0.5,
         borderRadius: '0.5rem',
         flexWrap: 'wrap'
       }}
     >
       <Stack direction='row' gap={0.5} alignItems='center'>
-        <Typography fontWeight={600}>Connection:</Typography>
+        <Typography>Connection:</Typography>
         <CircleIcon color={connected ? 'success' : 'error'} fontSize='small' />
       </Stack>
       <Stack direction='row' gap={0.5}>
-        <Typography fontWeight={600}>Network:</Typography>
+        <Typography>Network:</Typography>
         <Typography>{network}</Typography>
       </Stack>
       <Stack direction='row' gap={0.5}>
-        <Typography fontWeight={600}>$QUIZ Balance:</Typography>
+        <Typography>$QUIZ Balance:</Typography>
         <Typography>{balance}</Typography>
       </Stack>
     </Stack>

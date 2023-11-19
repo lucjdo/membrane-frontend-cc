@@ -9,7 +9,7 @@ interface QuizInitialProps {
 export default function QuizInitial({ initialImageUrl }: QuizInitialProps) {
   const { setSurveyStatus } = useQuestionsContext()
   return (
-    <Stack>
+    <Stack gap={1}>
       <ResponsiveImage imageUrl={initialImageUrl} />
       <Button
         variant='contained'

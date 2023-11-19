@@ -3,5 +3,10 @@
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
+  height: 100vh;
+}
+
+body {
+  background: linear-gradient(to bottom right, #121212, #1f1f1f);
 }
 

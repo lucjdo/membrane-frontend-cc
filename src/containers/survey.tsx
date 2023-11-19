@@ -8,10 +8,12 @@ export default function Survey() {
   const { connected } = useAccount()
   return (
     <Stack gap={3}>
-      <SurveyQuestionsProvider>
-        <SurveyHeader />
-        {connected && <SurveyQuiz />}
-      </SurveyQuestionsProvider>
+      <Stack gap={4}>
+        <SurveyQuestionsProvider>
+          <SurveyHeader />
+          {connected && <SurveyQuiz />}
+        </SurveyQuestionsProvider>
+      </Stack>
     </Stack>
   )
 }

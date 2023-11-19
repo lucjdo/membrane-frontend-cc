@@ -1,4 +1,5 @@
 import LinearTimeout from '@components/linear-timeout'
+import ResponsiveImage from '@components/responsive-image'
 import { useQuestionsContext } from '@hooks/useQuestionsContext'
 import {
   FormControl,
@@ -73,19 +74,18 @@ export default function FormStep({ question }: FormStepProps) {
           gap: 1,
           background: 'white',
           padding: '1rem 2rem',
-          borderRadius: '0.5rem'
+          borderRadius: '0.5rem',
+          display: 'flex',
+          maxWidth: '500px'
         }}
       >
         <FormLabel id={formId}>{question.text}</FormLabel>
-        <img
-          src={`${question.image}?fit=crop&auto=format`}
-          alt={`${question} image`}
-        />
+        <ResponsiveImage imageUrl={question.image} />
         <RadioGroup aria-labelledby={formId} name='options-group'>
           {answerOptions.map((option) => (
             <FormControlLabel
               key={option.text}
-              sx={{ color: 'black' }}
+              sx={{ color: 'black', textAlign: 'left' }}
               value={option.id}
               control={<Radio />}
               label={option.text}
