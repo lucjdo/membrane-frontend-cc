@@ -1,3 +1,4 @@
+import ResponsiveImage from '@components/responsive-image'
 import { useQuestionsContext } from '@hooks/useQuestionsContext'
 import { Button, Stack } from '@mui/material'
 
@@ -9,10 +10,7 @@ export default function QuizInitial({ initialImageUrl }: QuizInitialProps) {
   const { setSurveyStatus } = useQuestionsContext()
   return (
     <Stack>
-      <img
-        src={`${initialImageUrl}?fit=crop&auto=format`}
-        alt='Survey Initial Image'
-      />
+      <ResponsiveImage imageUrl={initialImageUrl} />
       <Button
         variant='contained'
         onClick={() => setSurveyStatus('in-progress')}

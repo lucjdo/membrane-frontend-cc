@@ -13,7 +13,17 @@ export default function AccountInfo({
   balance
 }: AccountInfoProps) {
   return (
-    <Stack direction='row' gap={2} justifyContent='space-around'>
+    <Stack
+      direction='row'
+      gap={2}
+      justifyContent='space-around'
+      sx={{
+        border: '0.5px solid #fff',
+        p: 0.5,
+        borderRadius: '0.5rem',
+        flexWrap: 'wrap'
+      }}
+    >
       <Stack direction='row' gap={0.5} alignItems='center'>
         <Typography fontWeight={600}>Connection:</Typography>
         <CircleIcon color={connected ? 'success' : 'error'} fontSize='small' />
