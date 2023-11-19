@@ -16,8 +16,10 @@ interface SurveyQuestionsContextType {
   answers: (string | undefined)[]
   addAnswer: (a: string) => void
   isLastQuestion: boolean
-  surveyStatus: SurveyStatus
   setSurveyStatus: Dispatch<SetStateAction<SurveyStatus>>
+  surveyDone: boolean
+  surveyReadyForStart: boolean
+  surveyInProgress: boolean
 }
 
 export const SurveyQuestionsContext = createContext<
@@ -30,6 +32,9 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
   const [questionsAmount, setQuestionsAmount] = useState(0)
   const [answers, setAnswers] = useState<string[]>([])
   const isLastQuestion = questionNumber === questionsAmount - 1
+  const surveyReadyForStart = surveyStatus === 'ready'
+  const surveyInProgress = surveyStatus === 'in-progress'
+  const surveyDone = surveyStatus === 'done'
 
   const incQuestionNumber = useCallback(() => {
     setQuestionNumber((prevPage) => {
@@ -54,8 +59,10 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
         incQuestionNumber,
         setQuestionsAmount,
         isLastQuestion,
-        surveyStatus,
-        setSurveyStatus
+        setSurveyStatus,
+        surveyReadyForStart,
+        surveyInProgress,
+        surveyDone
       }}
     >
       {children}
