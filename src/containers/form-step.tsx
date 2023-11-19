@@ -63,7 +63,14 @@ export default function FormStep({ question }: FormStepProps) {
         incQuestionNumber()
       })}
     >
-      <FormControl sx={{ gap: 1 }}>
+      <FormControl
+        sx={{
+          gap: 1,
+          background: 'white',
+          padding: '1rem 2rem',
+          borderRadius: '0.5rem'
+        }}
+      >
         <FormLabel id={formId}>{question.text}</FormLabel>
         <img
           src={`${question.image}?fit=crop&auto=format`}
