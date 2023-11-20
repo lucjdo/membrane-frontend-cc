@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { submitAnswers } from '@services/contracts/submitAnswers'
 import { useQuestionsContext } from './useQuestionsContext'
-import { showCustomError } from '../utils/showCustomError'
 
 export function useOnGetReward() {
   const queryClient = useQueryClient()
@@ -13,9 +12,6 @@ export function useOnGetReward() {
     mutationFn: () => submitAnswers(surveyId, answersIds),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['quiz-balance'] })
-    },
-    onError: (err) => {
-      showCustomError(err)
     }
   })
 

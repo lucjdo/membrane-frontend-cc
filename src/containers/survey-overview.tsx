@@ -4,7 +4,7 @@ import { Button, Stack, Typography } from '@mui/material'
 
 export default function SurveyOverview() {
   const { answers } = useQuestionsContext()
-  const { onGetReward, error, isError } = useOnGetReward()
+  const { onGetReward } = useOnGetReward()
 
   const handleOnGetReward = () => {
     onGetReward()
@@ -30,7 +30,7 @@ export default function SurveyOverview() {
           </Stack>
         ))}
       </Stack>
-      <Button variant='contained' color='error' onClick={handleOnGetReward}>
+      <Button variant='contained' color='success' onClick={handleOnGetReward}>
         Get Reward!
       </Button>
     </Stack>
