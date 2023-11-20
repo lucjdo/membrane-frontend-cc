@@ -1,6 +1,6 @@
 import LinearTimeout from '@components/linear-timeout'
 import ResponsiveImage from '@components/responsive-image'
-import { useQuestionsContext } from '@hooks/useQuestionsContext'
+import { useQuizContext } from '@hooks/useQuizContext'
 import {
   FormControl,
   FormLabel,
@@ -26,10 +26,9 @@ export default function FormStep({ question }: FormStepProps) {
   const { register, handleSubmit, watch } = useForm<FormValues>()
   const lifetime = question.lifetimeSeconds * 1000
   const { incQuestionNumber, addAnswer, isLastQuestion, setSurveyStatus } =
-    useQuestionsContext()
+    useQuizContext()
   const answerOptions = question?.options
   const answer = watch('answerId')
-  console.log(answer)
   const questionText = question.text
 
   useEffect(() => {

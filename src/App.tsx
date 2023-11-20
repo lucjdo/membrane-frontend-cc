@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { Toaster } from 'sonner'
 import Survey from '@containers/survey'
 import './App.css'
 import { ThemeProvider } from '@mui/material'
@@ -11,6 +12,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
+        <Toaster />
         <Survey />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />

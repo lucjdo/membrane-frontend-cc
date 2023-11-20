@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material'
 import SURVEY_EXAMPLE from '../utils/survey-example.json'
 import { useEffect } from 'react'
-import { useQuestionsContext } from '@hooks/useQuestionsContext'
+import { useQuizContext } from '@hooks/useQuizContext'
 import FormStep from './form-step'
 import QuizInitial from './quiz-initial'
 import SurveyOverview from './survey-overview'
@@ -13,7 +13,7 @@ export default function SurveyQuiz() {
     surveyReadyForStart,
     surveyDone,
     surveyInProgress
-  } = useQuestionsContext()
+  } = useQuizContext()
   const surveyTitle = SURVEY_EXAMPLE.title
   const initialImageUrl = SURVEY_EXAMPLE.image
   const questions = SURVEY_EXAMPLE.questions
@@ -28,7 +28,7 @@ export default function SurveyQuiz() {
     <Stack className='space' sx={{}}>
       <Typography
         variant='h5'
-        sx={{ fontFamily: 'Smooch Sans', fontSize: '4rem' }}
+        sx={{ fontFamily: 'Smooch Sans', fontSize: '4rem', color: '#ffa66a' }}
       >
         {surveyTitle.toUpperCase()}
       </Typography>

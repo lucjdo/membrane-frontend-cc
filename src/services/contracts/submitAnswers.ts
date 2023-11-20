@@ -5,7 +5,7 @@ import { TransactionReceipt, ethers } from 'ethers'
 export async function submitAnswers(
   surveyId: number,
   answersIds: number[]
-): Promise<TransactionReceipt> {
+): Promise<TransactionReceipt | undefined> {
   try {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const signer = await provider.getSigner()
@@ -17,7 +17,8 @@ export async function submitAnswers(
     const transaction = await contract.submit(surveyId, answersIds)
     return await transaction.wait()
   } catch (error) {
-    console.error(error)
-    throw new Error('Error on submit method')
+    throw new Error(
+      'Oops! Something unexpected happened while getting your reward. Please give it another try later.'
+    )
   }
 }
