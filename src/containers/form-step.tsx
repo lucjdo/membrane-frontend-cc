@@ -29,7 +29,6 @@ export default function FormStep({ question }: FormStepProps) {
     useQuizContext()
   const answerOptions = question?.options
   const answer = watch('answerId')
-  console.log(answer)
   const questionText = question.text
 
   useEffect(() => {
