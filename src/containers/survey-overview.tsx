@@ -1,8 +1,10 @@
 import { useOnGetReward } from '@hooks/useOnGetReward'
 import { useQuizContext } from '@hooks/useQuizContext'
-import { Button, CircularProgress, Stack, Typography } from '@mui/material'
+import { CircularProgress, Stack, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
+import SmoochButton from '../components/smooch-button'
+import SmoochTitle from '@components/smooch-title'
 
 export default function SurveyOverview() {
   const { answers, setSurveyStatus } = useQuizContext()
@@ -20,12 +22,7 @@ export default function SurveyOverview() {
   return (
     <Stack alignItems='center' gap={2} pb={3}>
       <Stack>
-        <Typography
-          variant='h5'
-          sx={{ fontFamily: 'Smooch Sans', fontSize: '3rem' }}
-        >
-          Thanks for participating!
-        </Typography>
+        <SmoochTitle>Thanks for participating!</SmoochTitle>
         <Typography variant='h5'>
           Let's take a peek at your survey overview
         </Typography>
@@ -45,19 +42,9 @@ export default function SurveyOverview() {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Button
-          variant='contained'
-          color='success'
-          sx={{
-            fontFamily: 'Smooch Sans',
-            fontSize: '1.4rem',
-            fontWeight: 700,
-            padding: '0rem 2rem'
-          }}
-          onClick={handleOnGetReward}
-        >
+        <SmoochButton color='success' onClick={handleOnGetReward}>
           Get Reward!
-        </Button>
+        </SmoochButton>
       )}
     </Stack>
   )

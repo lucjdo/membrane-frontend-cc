@@ -1,3 +1,4 @@
+import FormWrapper from '@components/form-wrapper'
 import LinearTimeout from '@components/linear-timeout'
 import ResponsiveImage from '@components/responsive-image'
 import { useQuizContext } from '@hooks/useQuizContext'
@@ -54,7 +55,7 @@ export default function FormStep({ question }: FormStepProps) {
   ])
 
   return (
-    <form
+    <FormWrapper
       onSubmit={handleSubmit((data) => {
         const answerResponse = answerOptions.find(
           (ans) => ans.id === data.answerId
@@ -68,35 +69,24 @@ export default function FormStep({ question }: FormStepProps) {
         incQuestionNumber()
       })}
     >
-      <FormControl
-        sx={{
-          gap: 1,
-          background: 'white',
-          padding: '1rem 2rem',
-          borderRadius: '0.5rem',
-          display: 'flex',
-          maxWidth: '500px'
-        }}
-      >
-        <FormLabel id={formId}>{question.text}</FormLabel>
-        <ResponsiveImage imageUrl={question.image} />
-        <RadioGroup aria-labelledby={formId} name='options-group'>
-          {answerOptions.map((option) => (
-            <FormControlLabel
-              key={option.text}
-              sx={{ color: 'black', textAlign: 'left' }}
-              value={option.id}
-              control={<Radio />}
-              label={option.text}
-              {...register('answerId')}
-            />
-          ))}
-        </RadioGroup>
-        <LinearTimeout time={lifetime} />
-        <Button type='submit' disabled={!answer}>
-          {isLastQuestion ? 'Finish Survey' : 'Continue'}
-        </Button>
-      </FormControl>
-    </form>
+      <FormLabel id={formId}>{question.text}</FormLabel>
+      <ResponsiveImage imageUrl={question.image} />
+      <RadioGroup aria-labelledby={formId} name='options-group'>
+        {answerOptions.map((option) => (
+          <FormControlLabel
+            key={option.text}
+            sx={{ color: 'black', textAlign: 'left' }}
+            value={option.id}
+            control={<Radio />}
+            label={option.text}
+            {...register('answerId')}
+          />
+        ))}
+      </RadioGroup>
+      <LinearTimeout time={lifetime} />
+      <Button type='submit' disabled={!answer}>
+        {isLastQuestion ? 'Finish Survey' : 'Continue'}
+      </Button>
+    </FormWrapper>
   )
 }
