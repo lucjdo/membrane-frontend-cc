@@ -9,7 +9,8 @@ export function useOnGetReward() {
   const answersIds = validAnswers.map((answer) => Number(answer.answer?.id))
 
   const onGetReward = async () => {
-    await submitAnswers(surveyId, answersIds)
+    const receipt = await submitAnswers(surveyId, answersIds)
+    console.log(receipt)
     queryClient.invalidateQueries({ queryKey: ['quiz-balance'] })
   }
 

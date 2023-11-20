@@ -24,7 +24,7 @@ export default function AccountInfo({
       }}
     >
       <Stack direction='row' gap={0.5} alignItems='center'>
-        <Typography>Connection:</Typography>
+        <Typography fontWeight={'bold'}>Connection:</Typography>
         <CircleIcon color={connected ? 'success' : 'error'} fontSize='small' />
       </Stack>
       <Stack direction='row' gap={0.5}>
