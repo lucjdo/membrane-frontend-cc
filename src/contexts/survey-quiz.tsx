@@ -15,7 +15,7 @@ type QuestionResponse = {
   answer: Option | undefined
 }
 
-interface SurveyQuestionsContextType {
+interface SurveyQuizContextType {
   surveyId: number
   questionNumber: number
   incQuestionNumber: () => void
@@ -30,11 +30,11 @@ interface SurveyQuestionsContextType {
   setSurveyId: Dispatch<SetStateAction<number>>
 }
 
-export const SurveyQuestionsContext = createContext<
-  SurveyQuestionsContextType | undefined
+export const SurveyQuizContext = createContext<
+  SurveyQuizContextType | undefined
 >(undefined)
 
-export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
+export function SurveyQuizProvider({ children }: { children: ReactNode }) {
   const [surveyId, setSurveyId] = useState(0)
   const [surveyStatus, setSurveyStatus] = useState<SurveyStatus>('ready')
   const [questionNumber, setQuestionNumber] = useState(0)
@@ -60,7 +60,7 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <SurveyQuestionsContext.Provider
+    <SurveyQuizContext.Provider
       value={{
         addAnswer,
         answers,
@@ -77,6 +77,6 @@ export function SurveyQuestionsProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </SurveyQuestionsContext.Provider>
+    </SurveyQuizContext.Provider>
   )
 }

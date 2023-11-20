@@ -1,7 +1,6 @@
 import { QUIZ_ABI } from '@services/utils/abis/quiz'
 import { QUIZ_CONTRACT_ADDRESS } from '@services/utils/addresses'
 import { TransactionReceipt, ethers } from 'ethers'
-import { showCustomError } from '../../utils/showCustomError'
 
 export async function submitAnswers(
   surveyId: number,
@@ -18,6 +17,8 @@ export async function submitAnswers(
     const transaction = await contract.submit(surveyId, answersIds)
     return await transaction.wait()
   } catch (error) {
-    showCustomError(error)
+    throw new Error(
+      'Oops! Something unexpected happened while getting your reward. Please give it another try later.'
+    )
   }
 }

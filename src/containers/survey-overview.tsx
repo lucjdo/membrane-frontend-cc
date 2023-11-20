@@ -1,14 +1,21 @@
 import { useOnGetReward } from '@hooks/useOnGetReward'
-import { useQuestionsContext } from '@hooks/useQuestionsContext'
-import { Button, Stack, Typography } from '@mui/material'
+import { useQuizContext } from '@hooks/useQuizContext'
+import { Button, CircularProgress, Stack, Typography } from '@mui/material'
+import { useEffect } from 'react'
+import { toast } from 'sonner'
 
 export default function SurveyOverview() {
-  const { answers } = useQuestionsContext()
-  const { onGetReward } = useOnGetReward()
+  const { answers, setSurveyStatus } = useQuizContext()
+  const { onGetReward, isLoading, isSuccess } = useOnGetReward()
 
   const handleOnGetReward = () => {
+    toast.info('Your reward is in process...')
     onGetReward()
   }
+
+  useEffect(() => {
+    if (isSuccess) setSurveyStatus('ready')
+  }, [isSuccess, setSurveyStatus])
 
   return (
     <Stack alignItems='center' gap={2} pb={3}>
@@ -30,9 +37,13 @@ export default function SurveyOverview() {
           </Stack>
         ))}
       </Stack>
-      <Button variant='contained' color='success' onClick={handleOnGetReward}>
-        Get Reward!
-      </Button>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <Button variant='contained' color='success' onClick={handleOnGetReward}>
+          Get Reward!
+        </Button>
+      )}
     </Stack>
   )
 }

@@ -1,5 +1,5 @@
 import ResponsiveImage from '@components/responsive-image'
-import { useQuestionsContext } from '@hooks/useQuestionsContext'
+import { useQuizContext } from '@hooks/useQuizContext'
 import { Button, Stack } from '@mui/material'
 
 interface QuizInitialProps {
@@ -7,7 +7,7 @@ interface QuizInitialProps {
 }
 
 export default function QuizInitial({ initialImageUrl }: QuizInitialProps) {
-  const { setSurveyStatus } = useQuestionsContext()
+  const { setSurveyStatus } = useQuizContext()
   return (
     <Stack gap={1}>
       <ResponsiveImage imageUrl={initialImageUrl} />

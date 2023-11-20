@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import MetamaskConnect from './metamask-connect'
-import { useQuestionsContext } from '@hooks/useQuestionsContext'
+import { useQuizContext } from '@hooks/useQuizContext'
 
 export default function SurveyHeader() {
-  const { surveyReadyForStart } = useQuestionsContext()
+  const { surveyReadyForStart } = useQuizContext()
   return (
     <Box>
       {surveyReadyForStart && (
