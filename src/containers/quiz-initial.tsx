@@ -14,6 +14,12 @@ export default function QuizInitial({ initialImageUrl }: QuizInitialProps) {
       <Button
         variant='contained'
         onClick={() => setSurveyStatus('in-progress')}
+        sx={{
+          fontFamily: 'Smooch Sans',
+          fontSize: '1.4rem',
+          padding: '0rem 2rem',
+          fontWeight: 700
+        }}
       >
         Start Survey
       </Button>

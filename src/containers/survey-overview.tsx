@@ -20,7 +20,12 @@ export default function SurveyOverview() {
   return (
     <Stack alignItems='center' gap={2} pb={3}>
       <Stack>
-        <Typography variant='h5'>Thanks for participating!</Typography>
+        <Typography
+          variant='h5'
+          sx={{ fontFamily: 'Smooch Sans', fontSize: '3rem' }}
+        >
+          Thanks for participating!
+        </Typography>
         <Typography variant='h5'>
           Let's take a peek at your survey overview
         </Typography>
@@ -40,7 +45,17 @@ export default function SurveyOverview() {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Button variant='contained' color='success' onClick={handleOnGetReward}>
+        <Button
+          variant='contained'
+          color='success'
+          sx={{
+            fontFamily: 'Smooch Sans',
+            fontSize: '1.4rem',
+            fontWeight: 700,
+            padding: '0rem 2rem'
+          }}
+          onClick={handleOnGetReward}
+        >
           Get Reward!
         </Button>
       )}

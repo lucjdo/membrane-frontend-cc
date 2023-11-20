@@ -8,7 +8,10 @@ export default function SurveyHeader() {
     <Box>
       {surveyReadyForStart && (
         <>
-          <Typography variant='h3' sx={{ fontSize: '2.5rem', mb: 1 }}>
+          <Typography
+            variant='h3'
+            sx={{ fontSize: '2.5rem', mb: 1, color: '#1976d2' }}
+          >
             Welcome to Membrane Survey
           </Typography>
           <Typography variant='subtitle1' mb={2}>
