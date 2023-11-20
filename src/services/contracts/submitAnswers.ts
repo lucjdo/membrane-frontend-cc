@@ -18,6 +18,6 @@ export async function submitAnswers(
     return await transaction.wait()
   } catch (error) {
     console.error(error)
-    throw new Error('Error on submit method')
+    throw new Error(error)
   }
 }

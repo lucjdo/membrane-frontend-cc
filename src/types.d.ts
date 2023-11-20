@@ -21,3 +21,7 @@ export interface Option {
   text: string
   id: string
 }
+
+export interface CustomError {
+  message: string
+}
