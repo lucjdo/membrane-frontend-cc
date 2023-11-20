@@ -1,8 +1,11 @@
 import { QUIZ_ABI } from '@services/utils/abis/quiz'
 import { QUIZ_CONTRACT_ADDRESS } from '@services/utils/addresses'
-import { ethers } from 'ethers'
+import { TransactionReceipt, ethers } from 'ethers'
 
-export async function submitAnswers(surveyId: number, answersIds: number[]) {
+export async function submitAnswers(
+  surveyId: number,
+  answersIds: number[]
+): Promise<TransactionReceipt> {
   try {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const signer = await provider.getSigner()
@@ -12,9 +15,9 @@ export async function submitAnswers(surveyId: number, answersIds: number[]) {
       signer
     )
     const transaction = await contract.submit(surveyId, answersIds)
-    await transaction.wait()
-    console.log('Transaction successful!')
+    return await transaction.wait()
   } catch (error) {
-    console.error('Error submitting to the contract:', error)
+    console.error(error)
+    throw new Error('Error on submit method')
   }
 }
