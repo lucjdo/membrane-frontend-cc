@@ -5,7 +5,6 @@ interface FormWrapperProps extends FormControlProps {}
 export default function FormWrapper(props: FormWrapperProps) {
   return (
     <FormControl
-      component={'form'}
       sx={{
         gap: 1,
         background: 'white',

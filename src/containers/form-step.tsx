@@ -55,7 +55,7 @@ export default function FormStep({ question }: FormStepProps) {
   ])
 
   return (
-    <FormWrapper
+    <form
       onSubmit={handleSubmit((data) => {
         const answerResponse = answerOptions.find(
           (ans) => ans.id === data.answerId
@@ -69,24 +69,26 @@ export default function FormStep({ question }: FormStepProps) {
         incQuestionNumber()
       })}
     >
-      <FormLabel id={formId}>{question.text}</FormLabel>
-      <ResponsiveImage imageUrl={question.image} />
-      <RadioGroup aria-labelledby={formId} name='options-group'>
-        {answerOptions.map((option) => (
-          <FormControlLabel
-            key={option.text}
-            sx={{ color: 'black', textAlign: 'left' }}
-            value={option.id}
-            control={<Radio />}
-            label={option.text}
-            {...register('answerId')}
-          />
-        ))}
-      </RadioGroup>
-      <LinearTimeout time={lifetime} />
-      <Button type='submit' disabled={!answer}>
-        {isLastQuestion ? 'Finish Survey' : 'Continue'}
-      </Button>
-    </FormWrapper>
+      <FormWrapper>
+        <FormLabel id={formId}>{question.text}</FormLabel>
+        <ResponsiveImage imageUrl={question.image} />
+        <RadioGroup aria-labelledby={formId} name='options-group'>
+          {answerOptions.map((option) => (
+            <FormControlLabel
+              key={option.text}
+              sx={{ color: 'black', textAlign: 'left' }}
+              value={option.id}
+              control={<Radio />}
+              label={option.text}
+              {...register('answerId')}
+            />
+          ))}
+        </RadioGroup>
+        <LinearTimeout time={lifetime} />
+        <Button type='submit' disabled={!answer}>
+          {isLastQuestion ? 'Finish Survey' : 'Continue'}
+        </Button>
+      </FormWrapper>
+    </form>
   )
 }
