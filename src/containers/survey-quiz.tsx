@@ -28,7 +28,7 @@ export default function SurveyQuiz() {
     <Stack className='space' sx={{}}>
       <Typography
         variant='h5'
-        sx={{ fontFamily: 'Smooch Sans', fontSize: '4rem', color: '#f37621' }}
+        sx={{ fontFamily: 'Smooch Sans', fontSize: '4rem', color: '#f3cb21' }}
       >
         {surveyTitle.toUpperCase()}
       </Typography>
