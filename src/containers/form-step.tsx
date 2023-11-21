@@ -3,7 +3,6 @@ import LinearTimeout from '@components/linear-timeout'
 import ResponsiveImage from '@components/responsive-image'
 import { useQuizContext } from '@hooks/useQuizContext'
 import {
-  FormControl,
   FormLabel,
   RadioGroup,
   FormControlLabel,
