@@ -27,6 +27,7 @@ https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/1a12323c-f493-480
 ## Images
 
 <img width="1508" alt="Screenshot 2023-11-21 at 01 19 23" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/2c8c033c-c26e-49ef-b87d-5a6a844a8da1">
+<img width="1097" alt="Screenshot 2023-11-21 at 01 42 48" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/b0b92824-1ec3-4a61-9b39-2165523655e2">
 <img width="1440" alt="Screenshot 2023-11-21 at 01 20 24" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/53209035-cb83-47a2-8d55-0964e3a39322">
 <img width="1388" alt="Screenshot 2023-11-21 at 01 20 40" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/2034d22c-f270-4646-a8d2-79dd4cdab342">
 <img width="1198" alt="Screenshot 2023-11-21 at 01 20 53" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/95c2a7eb-976b-4d40-a146-e70bd5bf6ab6">
