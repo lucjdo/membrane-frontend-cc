@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Membrane Survey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+For running the app just clone the repo and run:
+- `npm run install`
+- `npm run dev`
 
-Currently, two official plugins are available:
+## Stack
+- React + Vite + Typescript
+- React Query
+- React hook forms
+- Context
+- Material UI
+- EsLint
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Structure
+- `/components`: Reusable UI components that are not tied to specific pages
+- `/containers`: Represent higher-level components that use presentational components. They handle data, state management, and business logic
+- `/hooks`: custom hooks to re-use logic
+- `/contexts`: Global state management using Context API.
+- `/services`: API calls, utilities, and helper functions.
 
-## Expanding the ESLint configuration
+## Video
+https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/1a12323c-f493-4804-9d88-731a37bcabf4
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Images
 
-- Configure the top-level `parserOptions` property like this:
+<img width="1508" alt="Screenshot 2023-11-21 at 01 19 23" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/2c8c033c-c26e-49ef-b87d-5a6a844a8da1">
+<img width="1440" alt="Screenshot 2023-11-21 at 01 20 24" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/53209035-cb83-47a2-8d55-0964e3a39322">
+<img width="1388" alt="Screenshot 2023-11-21 at 01 20 40" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/2034d22c-f270-4646-a8d2-79dd4cdab342">
+<img width="1198" alt="Screenshot 2023-11-21 at 01 20 53" src="https://github.com/lucjdo/membrane-frontend-cc/assets/33455403/95c2a7eb-976b-4d40-a146-e70bd5bf6ab6">
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
