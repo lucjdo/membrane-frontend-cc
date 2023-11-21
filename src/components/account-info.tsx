@@ -25,7 +25,10 @@ export default function AccountInfo({
     >
       <Stack direction='row' gap={0.5} alignItems='center'>
         <Typography variant='subtitle2'>Connection:</Typography>
-        <CircleIcon color={connected ? 'success' : 'error'} fontSize='small' />
+        <CircleIcon
+          color={connected ? 'success' : 'error'}
+          sx={{ fontSize: '1rem' }}
+        />
       </Stack>
       <Stack direction='row' gap={0.5}>
         <Typography variant='subtitle2'>Network:</Typography>

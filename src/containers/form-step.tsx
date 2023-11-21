@@ -1,3 +1,4 @@
+import FormWrapper from '@components/form-wrapper'
 import LinearTimeout from '@components/linear-timeout'
 import ResponsiveImage from '@components/responsive-image'
 import { useQuizContext } from '@hooks/useQuizContext'
@@ -68,16 +69,7 @@ export default function FormStep({ question }: FormStepProps) {
         incQuestionNumber()
       })}
     >
-      <FormControl
-        sx={{
-          gap: 1,
-          background: 'white',
-          padding: '1rem 2rem',
-          borderRadius: '0.5rem',
-          display: 'flex',
-          maxWidth: '500px'
-        }}
-      >
+      <FormWrapper>
         <FormLabel id={formId}>{question.text}</FormLabel>
         <ResponsiveImage imageUrl={question.image} />
         <RadioGroup aria-labelledby={formId} name='options-group'>
@@ -96,7 +88,7 @@ export default function FormStep({ question }: FormStepProps) {
         <Button type='submit' disabled={!answer}>
           {isLastQuestion ? 'Finish Survey' : 'Continue'}
         </Button>
-      </FormControl>
+      </FormWrapper>
     </form>
   )
 }
